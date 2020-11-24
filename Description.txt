@@ -1,16 +1,12 @@
 
--- expo whoami
--- expo init Swim_reg_org (select Blank enter)
--- cd swim_reg
+ Comment and reorganize code corectly in new branch
+ Add Expo SQLite
+ Finish other pages?
+ Expo publish
+ Deploy to App stores
+ THEN maybe MOVE TO AWS/Ku + DB (rewrite all)
 
-(node_modules will not be present after cloning)
 
--- npm install
--- npm start
-
-Ignore optional WARN: fsevents is for a different OS
-Ignore packages looking for funding: I don't have any money
-Ignore low severity vulnerabillities
 
 Try if I can do a quick merged form with this last option: tcomb
 
@@ -32,12 +28,3 @@ Define template for distance and time with:
  - https://github.com/gcanti/tcomb-form-native
  - https://github.com/gcanti/tcomb-form-native/tree/master/lib/templates/bootstrap
 
-
- Add Expo SQLite
- Finish other pages?
- Expo publish
- Deploy to App stores
- THEN MOVE TO AWS/Ku + DB (rewrite all)
-
-
-DECIDE IF I SHOULDNT MOVE TO THE SERIOUS VERSION - refresh all concepts - start again
