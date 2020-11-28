@@ -1,11 +1,28 @@
+// ========================== Records screen =============================//
+// =======================================================================//
+
+
+// Libraries -------------------------------------------------------------//
+// -----------------------------------------------------------------------//
+
 import React from 'react';
 import { Text, View, ScrollView, Button, TouchableHighlight, StyleSheet} from 'react-native';
 import { SessionsContext } from './SessionsContext';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
+
+// Top navigator ---------------------------------------------------------//
+// -----------------------------------------------------------------------//
+
 const SubTab = createMaterialTopTabNavigator();
 
+
+// Stats screen component ------------------------------------------------//
+// -----------------------------------------------------------------------//
+
 class StatsScreen extends React.Component {
+
+    // Render method ---------------------------------------------//
     render() {
         return (
         <SubTab.Navigator
@@ -32,7 +49,13 @@ class StatsScreen extends React.Component {
     }
 }
 
+
+// Stats OPEN subtab component -------------------------------------------//
+// -----------------------------------------------------------------------//
+
 class StatsOpenScreen extends React.Component {
+
+    // Render method ---------------------------------------------//
     render() {
         return (
 
@@ -42,7 +65,13 @@ class StatsOpenScreen extends React.Component {
     }
 }
     
+
+// Stats POOL subtab component -------------------------------------------//
+// -----------------------------------------------------------------------//
+
 class StatsPoolScreen extends React.Component {
+
+    // Render method ---------------------------------------------//
     render() {
         return (
             <ScrollView >
@@ -52,6 +81,8 @@ class StatsPoolScreen extends React.Component {
 }
 
 
+// -----------------------------------------------------------------------//
+// Set stats context types
 StatsScreen.contextType = SessionsContext;
 StatsOpenScreen.contextType = SessionsContext;
 StatsPoolScreen.contextType = SessionsContext;

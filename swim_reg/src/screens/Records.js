@@ -1,9 +1,22 @@
+// ========================== Records screen =============================//
+// =======================================================================//
+
+
+// Libraries -------------------------------------------------------------//
+// -----------------------------------------------------------------------//
+
 import React from 'react';
 import { StatusBar, View, TextInput, StyleSheet, ScrollView, Text, AsyncStorage, Image } from 'react-native';
 import { SessionsContext } from './SessionsContext';
 import { styles as GlobalStyles } from '../utils/styles';
 
+
+// Records screen component ----------------------------------------------//
+// -----------------------------------------------------------------------//
+
 class RecordsScreen extends React.Component  {
+
+    // Render method ---------------------------------------------//
     render() {
         return (
             <View>
@@ -22,11 +35,14 @@ class RecordsScreen extends React.Component  {
     }
 }
 
+// Set session context type
 RecordsScreen.contextType = SessionsContext;
 
 export default RecordsScreen;
 
 
+// General styles --------------------------------------------------------//
+// -----------------------------------------------------------------------//
 
 const styles = StyleSheet.create({
     container: {

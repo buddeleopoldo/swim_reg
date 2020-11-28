@@ -44,7 +44,7 @@ const getFormDate=(formDate)=>{
 const Tab = createBottomTabNavigator();
 
 
-// Main class ------------------------------------------------------------//
+// Main component --------------------------------------------------------//
 // -----------------------------------------------------------------------//
 
 class Main extends React.Component {
@@ -199,7 +199,7 @@ class Main extends React.Component {
 export default Main;
 
 
-// Main screen general styles --------------------------------------------//
+// General styles --------------------------------------------------------//
 // -----------------------------------------------------------------------//
 
 const styles = StyleSheet.create({

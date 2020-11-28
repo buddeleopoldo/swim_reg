@@ -1,4 +1,9 @@
-// Includes ----------------------------------------------------------------------
+// ========================== Sessions screen ============================//
+// =======================================================================//
+
+
+// Libraries -------------------------------------------------------------//
+// -----------------------------------------------------------------------//
 
 import React from 'react';
 import { Picker, View, Text, TextInput, Button, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
@@ -16,7 +21,8 @@ import AwesomeButtonRed from 'react-native-really-awesome-button/src/themes/red'
 import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue';
 
 
-// Main components ---------------------------------------------------------------
+// Top navigator - form --------------------------------------------------//
+// -----------------------------------------------------------------------//
 
 const SubTab = createMaterialTopTabNavigator();
 
@@ -32,9 +38,10 @@ const SessionForm = t.struct({
 });
 
 
-// Form styles and layouts -------------------------------------------------------
+// Form styles and layouts -----------------------------------------------//
+// -----------------------------------------------------------------------//
 
-// Define styles
+// Create styles -------------------------------------------------//
 const styles = StyleSheet.create(owStyles);
 const titleStylesheet = formStyles.titleStyle;
 const extraStylesheet = formStyles.extraStyle;
@@ -43,7 +50,7 @@ const dateStylesheet = formStyles.dateStyle;
 const minutesStylesheet = formStyles.minutesStyle;
 const secondsStylesheet = formStyles.secondsStyle;
 
-// Form general template 
+// Form general template -----------------------------------------//
 function formTemplate(locals) {
     return (
         <View >
@@ -79,7 +86,7 @@ function formTemplate(locals) {
     )
 }
 
-// Assign styles
+// Assign styles -------------------------------------------------//
 const options = {
     auto: 'placeholders',
     template: formTemplate,
@@ -114,10 +121,13 @@ const options = {
     },
   };
 
-// Sessions screen ----------------------------------------------------------------  
+
+// Sessions screen component ---------------------------------------------//
+// -----------------------------------------------------------------------//
 
 class SessionsScreen extends React.Component {
 
+    // Render method ---------------------------------------------//
     render() {
         return (
             <SubTab.Navigator
@@ -144,11 +154,13 @@ class SessionsScreen extends React.Component {
     }
 }
 
-// Sessions OPEN subtab ----------------------------------------------------------- 
+
+// Sessions OPEN subtab component ----------------------------------------//
+// -----------------------------------------------------------------------//
 
 class SessionsOpenScreen extends React.Component {
 
-    // Constructor
+    // Constructor method ----------------------------------------//
     constructor(props) {
         super(props)
         this.state = {
@@ -156,7 +168,7 @@ class SessionsOpenScreen extends React.Component {
         }     
     }  
     
-    // Main methods
+    // Main methods ----------------------------------------------//
     openForm = () => {
         this.setState({
             isFormVisible: true
@@ -181,16 +193,18 @@ class SessionsOpenScreen extends React.Component {
         } 
     }
 
-    // RENDER method
+    // Render method ---------------------------------------------//
     render() {
 
         return (
             <View style={styles.fullContainer}>
 
+                {/* New session button*/}
                 <AwesomeButtonBojack style={styles.addSessionButton} onPress={() => this.openForm()}>
                     NEW SESSION
                 </AwesomeButtonBojack>
 
+                {/* New session form */}
                 <Modal isVisible={this.state.isFormVisible} backdropOpacity={0.9} backdropColor={'#000803'} color={'white'}> 
                     <View >
 
@@ -218,6 +232,7 @@ class SessionsOpenScreen extends React.Component {
                     </View>
                 </Modal>
 
+                {/* Old sessions list */}
                 <View style={styles.scrollContainer}>
                     <ScrollView style={styles.swimscontainer}>
                         <Session 
@@ -232,9 +247,13 @@ class SessionsOpenScreen extends React.Component {
     }
 }
 
+
+// Sessions POOL subtab component ----------------------------------------//
+// -----------------------------------------------------------------------//
   
 class SessionsPoolScreen extends React.Component {
 
+    // Render method ---------------------------------------------//
     render() {
         return (
             <View>
@@ -243,6 +262,9 @@ class SessionsPoolScreen extends React.Component {
     }
 }
 
+
+// -----------------------------------------------------------------------//
+// Set session context types
 SessionsScreen.contextType = SessionsContext;
 SessionsOpenScreen.contextType = SessionsContext;
 SessionsPoolScreen.contextType = SessionsContext;
