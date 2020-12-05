@@ -14,6 +14,7 @@ const Sessions = (props) => {
       return (
         <Session
             style={BoxSubStyle.swim}
+            //pool={item.pool}
             key={i} 
             index={i} 
             title={item.title}

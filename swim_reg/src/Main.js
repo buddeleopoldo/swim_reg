@@ -18,7 +18,7 @@ import AccountScreen from './screens/Account';
 
 
 // Functions and definitions ---------------------------------------------//
-// -----------------------------------------------------------------------//
+// -------------------------- ---------------------------------------------//
 
 // Date form -----------------------------------------------------//
 
@@ -65,6 +65,7 @@ class Main extends React.Component {
         const sessions = this.state.sessions;
         const session = {
           title: sessionObj.title,
+          //pool: sessionObj.pool,
           createdOn: getFormDate(sessionObj.date),
           distance: sessionObj.distance,
           minutes: sessionObj.minutes,

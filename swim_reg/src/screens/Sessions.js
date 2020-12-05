@@ -19,7 +19,7 @@ import AwesomeButtonRed from 'react-native-really-awesome-button/src/themes/red'
 import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue';
 
 
-// Top navigator - form --------------------------------------------------//
+// Top navigator and form creation ---------------------------------------//
 // -----------------------------------------------------------------------//
 
 const SubTab = createMaterialTopTabNavigator();
@@ -27,6 +27,7 @@ const SubTab = createMaterialTopTabNavigator();
 const Form = t.form.Form;
 
 const SessionForm = t.struct({
+    //pool: t.Boolean,
     title: t.String,
     extra: t.maybe(t.String),
     date: t.Date,
@@ -39,7 +40,7 @@ const SessionForm = t.struct({
 // Form styles and layouts -----------------------------------------------//
 // -----------------------------------------------------------------------//
 
-// Create styles -------------------------------------------------//
+// Create stylesheets --------------------------------------------//
 const styles = StyleSheet.create(owStyles);
 const titleStylesheet = formStyles.titleStyle;
 const extraStylesheet = formStyles.extraStyle;
@@ -84,7 +85,7 @@ function formTemplate(locals) {
     )
 }
 
-// Assign styles -------------------------------------------------//
+// Assign styles to form ----------------------------------------//
 const options = {
     auto: 'placeholders',
     template: formTemplate,
@@ -101,7 +102,7 @@ const options = {
             mode: 'date',
             stylesheet: dateStylesheet,
             config: {
-                defaultValueText: 'PICK DATE',
+                defaultValueText: '* PICK DATE',
             }
         },
         distance: {
@@ -181,6 +182,7 @@ class SessionsOpenScreen extends React.Component {
 
     handleSubmit = () => {
         const values = this._form.getValue();
+        //values.pool = False;
         var validate = t.validate;
         var result = validate(values,SessionForm);
         if (result.isValid()) {
@@ -251,13 +253,94 @@ class SessionsOpenScreen extends React.Component {
   
 class SessionsPoolScreen extends React.Component {
 
+    // Constructor method ----------------------------------------//
+    constructor(props) {
+        super(props)
+        this.state = {
+          isFormVisible: false,
+        }     
+    }  
+    
+    // Main methods ----------------------------------------------//
+    openForm = () => {
+        this.setState({
+            isFormVisible: true
+        })
+    }
+
+    closeForm = () => {
+        this.setState({
+            isFormVisible: false
+        })
+    }
+
+
+    handleSubmit = () => {
+        const values = this._form.getValue();
+        //values.pool = True;
+        var validate = t.validate;
+        var result = validate(values,SessionForm);
+        if (result.isValid()) {
+            this.context.addSession(values)
+            this.setState({
+                isFormVisible: false
+            })
+        } 
+    }
+
     // Render method ---------------------------------------------//
     render() {
+
         return (
-            <View>
+            <View style={styles.fullContainer}>
+
+                {/* New session button*/}
+                <AwesomeButtonBojack style={styles.addSessionButton} onPress={() => this.openForm()}>
+                    NEW SESSION
+                </AwesomeButtonBojack>
+
+                {/* New session form */}
+                <Modal isVisible={this.state.isFormVisible} backdropOpacity={0.9} backdropColor={'#000803'} color={'white'}> 
+                    <View >
+
+                        <Form 
+                            ref={f => this._form = f}
+                            type={SessionForm}   
+                            options={options}                   
+                        /> 
+
+                        <View style={styles.buttonsContainer}>
+                            <View style={styles.cancelContainer}>
+                                <AwesomeButtonRed width={150} onPress={() => this.closeForm()}>
+                                    CANCEL
+                                </AwesomeButtonRed>
+                            </View> 
+
+                            <View style={styles.saveContainer}>
+                                <AwesomeButtonBlue width={150} onPress={() => this.handleSubmit()}>
+                                    SAVE
+                                </AwesomeButtonBlue>
+                            </View>
+                        </View>
+
+
+                    </View>
+                </Modal>
+
+                {/* Old sessions list */}
+                <View style={styles.scrollContainer}>
+                    <ScrollView style={styles.swimscontainer}>
+                        <Session 
+                            sessions={this.context.sessions}
+                            onDelete={this.context.onDeleteSession} 
+                        />
+                    </ScrollView>
+                </View>
+
             </View>
-        ); 
+        );  
     }
+
 }
 
 
