@@ -8,7 +8,7 @@
 import React from 'react';
 import { StatusBar, View, TextInput, StyleSheet, ScrollView, Text, AsyncStorage, Image } from 'react-native';
 import { SessionsContext } from './SessionsContext';
-import { styles as GlobalStyles } from '../utils/styles';
+import { styles as GlobalStyles } from '../utils/containerSessionsStyles';
 import Sessions from '../components/Sessions/SwimSessions';
 
 

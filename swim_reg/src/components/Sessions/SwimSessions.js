@@ -1,17 +1,19 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import Session from './SwimSession';
-import { styles as GlobalStyles } from '../../utils/styles';
+import {sessionBoxSubStyle} from '../../utils/containerSessionsStyles';
 import t from 'tcomb-form-native';
 
+// Create styles -------------------------------------------------//
+const BoxSubStyle = StyleSheet.create(sessionBoxSubStyle);
 
 const Sessions = (props) => {
-  let sessions = <Text style={styles.noSwim}>No SWIMs</Text>;
+  let sessions = <Text>No SWIMs</Text>;
   if (props.sessions.length) {
     sessions = props.sessions.map((item, i) => {
       return (
         <Session
-            style={styles.swim}
+            style={BoxSubStyle.swim}
             key={i} 
             index={i} 
             title={item.title}
@@ -28,20 +30,5 @@ const Sessions = (props) => {
   return sessions;
 }
 
-const styles = StyleSheet.create({
-  noSwim: {
-    fontSize: GlobalStyles.fontSize,
-    color: GlobalStyles.fontColor,
-    fontWeight: 'bold'
-  },
-  swim: {
-    flex: 1,
-    flexDirection: 'row',
-    margin: 5,
-    backgroundColor: 'burlywood',
-    borderRadius: 5,
-    padding: 2
-},
-});
 
 export default Sessions;

@@ -10,12 +10,10 @@ import { Picker, View, Text, TextInput, Button, StyleSheet, ScrollView, Touchabl
 import { SessionsContext } from './SessionsContext';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Session from '../components/Sessions/SwimSessions';
-//import { styles as GlobalStyles } from '../utils/styles';
 import {owStyles} from '../utils/owSessionsStyles';
 import formStyles from '../utils/sessionFormStyles';
 import t from 'tcomb-form-native';
 import Modal from 'react-native-modal';
-//import AwesomeButton from "react-native-really-awesome-button";
 import AwesomeButtonBojack from 'react-native-really-awesome-button/src/themes/bojack';
 import AwesomeButtonRed from 'react-native-really-awesome-button/src/themes/red';
 import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue';

@@ -107,7 +107,7 @@ class Main extends React.Component {
         }
     };
 
-    // Button press methods --------------------------------------//
+    // Button press methods --------------------------------------// 
     onPress(num) {
         alert('Session ' + num + ' pressed')
       }
@@ -198,25 +198,3 @@ class Main extends React.Component {
 
 export default Main;
 
-
-// General styles --------------------------------------------------------//
-// -----------------------------------------------------------------------//
-
-const styles = StyleSheet.create({
-    buttoncontainer: {
-        marginTop: 20,
-        marginLeft: 10,
-        marginRight: 10
-    },
-    button: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'dodgerblue',
-      borderRadius: 20,
-      padding: 2
-    },
-    buttonText: {
-      color: 'white',
-      fontSize: 20, 
-    }
-  });
